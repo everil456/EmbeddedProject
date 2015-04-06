@@ -1,0 +1,10 @@
+digraph {
+	Node1 -> Computer;
+	Node1 -> Node2;
+	Node2 -> Node3;
+	Node3 -> Node2;
+	Node2 -> Node1;
+	Node1 -> Computer;
+
+	{ rank=same Node1, Node2, Node3 }
+}
