@@ -4,6 +4,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../src/CommProtocol.c \
 ../src/InitDevice.c \
 ../src/em_cmu.c \
 ../src/em_emu.c \
@@ -17,6 +18,7 @@ C_SRCS += \
 ../src/usart.c 
 
 OBJS += \
+./src/CommProtocol.o \
 ./src/InitDevice.o \
 ./src/em_cmu.o \
 ./src/em_emu.o \
@@ -30,6 +32,7 @@ OBJS += \
 ./src/usart.o 
 
 C_DEPS += \
+./src/CommProtocol.d \
 ./src/InitDevice.d \
 ./src/em_cmu.d \
 ./src/em_emu.d \
@@ -44,6 +47,13 @@ C_DEPS += \
 
 
 # Each subdirectory must supply rules for building sources it contributes
+src/CommProtocol.o: ../src/CommProtocol.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GNU ARM C Compiler'
+	arm-none-eabi-gcc -g -gdwarf-2 -mcpu=cortex-m3 -mthumb '-DEFM32TG110F32=1' '-DDEBUG=1' -I"/Applications/SimplicityStudio_v3/developer/sdks/efm32/v2/CMSIS/Include" -I"/Applications/SimplicityStudio_v3/developer/sdks/efm32/v2/kits/common/bsp" -I"/Applications/SimplicityStudio_v3/developer/sdks/efm32/v2/emlib/inc" -I"/Applications/SimplicityStudio_v3/developer/sdks/efm32/v2/kits/common/drivers" -I"/Applications/SimplicityStudio_v3/developer/sdks/efm32/v2/Device/SiliconLabs/EFM32TG/Include" -O0 -Wall -c -fmessage-length=0 -mno-sched-prolog -fno-builtin -ffunction-sections -fdata-sections -std=c99 -MMD -MP -MF"src/CommProtocol.d" -MT"src/CommProtocol.o" -o "$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
 src/InitDevice.o: ../src/InitDevice.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: GNU ARM C Compiler'

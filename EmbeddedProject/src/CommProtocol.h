@@ -8,6 +8,12 @@
 #ifndef COMMPROTOCOL_H_
 #define COMMPROTOCOL_H_
 
+int Address;
+int Command;
+
+
+
+
 
 
 #endif /* COMMPROTOCOL_H_ */

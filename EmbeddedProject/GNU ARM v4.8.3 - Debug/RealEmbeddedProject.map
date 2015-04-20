@@ -15,6 +15,8 @@ Allocating common symbols
 Common symbol       size              file
 
 SystemCoreClock     0x4               ./CMSIS/efm32tg/system_efm32tg.o
+Address             0x4               ./src/CommProtocol.o
+Command             0x4               ./src/CommProtocol.o
 
 Discarded input sections
 
@@ -25,6 +27,26 @@ Discarded input sections
  .data          0x0000000000000000        0x0 /Applications/SimplicityStudio_v3/developer/toolchains/gnu_arm/4.8_2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m/crt0.o
  .bss           0x0000000000000000        0x0 /Applications/SimplicityStudio_v3/developer/toolchains/gnu_arm/4.8_2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m/crt0.o
  .ARM.extab     0x0000000000000000        0x0 /Applications/SimplicityStudio_v3/developer/toolchains/gnu_arm/4.8_2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+ .text          0x0000000000000000        0x0 ./src/CommProtocol.o
+ .data          0x0000000000000000        0x0 ./src/CommProtocol.o
+ .bss           0x0000000000000000        0x0 ./src/CommProtocol.o
+ .bss.AddressOrCommandFlag
+                0x0000000000000000        0x1 ./src/CommProtocol.o
+ .text.DoCommand
+                0x0000000000000000       0x74 ./src/CommProtocol.o
+ .debug_info    0x0000000000000000       0xf2 ./src/CommProtocol.o
+ .debug_abbrev  0x0000000000000000       0x78 ./src/CommProtocol.o
+ .debug_loc     0x0000000000000000       0x2c ./src/CommProtocol.o
+ .debug_aranges
+                0x0000000000000000       0x20 ./src/CommProtocol.o
+ .debug_ranges  0x0000000000000000       0x10 ./src/CommProtocol.o
+ .debug_line    0x0000000000000000      0x114 ./src/CommProtocol.o
+ .debug_str     0x0000000000000000      0x224 ./src/CommProtocol.o
+ .comment       0x0000000000000000       0x71 ./src/CommProtocol.o
+ .ARM.attributes
+                0x0000000000000000       0x33 ./src/CommProtocol.o
+ .debug_frame   0x0000000000000000       0x28 ./src/CommProtocol.o
+ COMMON         0x0000000000000000        0x8 ./src/CommProtocol.o
  .text          0x0000000000000000        0x0 ./src/InitDevice.o
  .data          0x0000000000000000        0x0 ./src/InitDevice.o
  .bss           0x0000000000000000        0x0 ./src/InitDevice.o
@@ -389,6 +411,7 @@ Linker script and memory map
 LOAD /Applications/SimplicityStudio_v3/developer/toolchains/gnu_arm/4.8_2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m/crti.o
 LOAD /Applications/SimplicityStudio_v3/developer/toolchains/gnu_arm/4.8_2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m/crtbegin.o
 LOAD /Applications/SimplicityStudio_v3/developer/toolchains/gnu_arm/4.8_2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+LOAD ./src/CommProtocol.o
 LOAD ./src/InitDevice.o
 LOAD ./src/em_cmu.o
 LOAD ./src/em_emu.o

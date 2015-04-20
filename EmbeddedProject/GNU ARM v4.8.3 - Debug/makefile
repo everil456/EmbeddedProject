@@ -31,7 +31,7 @@ all: RealEmbeddedProject.axf
 RealEmbeddedProject.axf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GNU ARM C Linker'
-	arm-none-eabi-gcc -g -gdwarf-2 -mcpu=cortex-m3 -mthumb -T "RealEmbeddedProject.ld" -Xlinker --gc-sections -Xlinker -Map="RealEmbeddedProject.map" --specs=nano.specs -o RealEmbeddedProject.axf "./src/InitDevice.o" "./src/em_cmu.o" "./src/em_emu.o" "./src/em_gpio.o" "./src/em_leuart.o" "./src/em_timer.o" "./src/em_usart.o" "./src/main.o" "./src/sl.o" "./src/test.o" "./src/usart.o" "./emlib/em_system.o" "./CMSIS/efm32tg/startup_efm32tg.o" "./CMSIS/efm32tg/system_efm32tg.o" -Wl,--start-group -lgcc -lc -lnosys -Wl,--end-group
+	arm-none-eabi-gcc -g -gdwarf-2 -mcpu=cortex-m3 -mthumb -T "RealEmbeddedProject.ld" -Xlinker --gc-sections -Xlinker -Map="RealEmbeddedProject.map" --specs=nano.specs -o RealEmbeddedProject.axf "./src/CommProtocol.o" "./src/InitDevice.o" "./src/em_cmu.o" "./src/em_emu.o" "./src/em_gpio.o" "./src/em_leuart.o" "./src/em_timer.o" "./src/em_usart.o" "./src/main.o" "./src/sl.o" "./src/test.o" "./src/usart.o" "./emlib/em_system.o" "./CMSIS/efm32tg/startup_efm32tg.o" "./CMSIS/efm32tg/system_efm32tg.o" -Wl,--start-group -lgcc -lc -lnosys -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
