@@ -106,6 +106,7 @@ int main () {
   while(1) {
 
 	CollectI2S(I2SData);
+
     if(USART1->STATUS & (1 << 7)) {      // if RX buffer contains valid data
       rx_char = USART1->RXDATA;          // store the data
     }

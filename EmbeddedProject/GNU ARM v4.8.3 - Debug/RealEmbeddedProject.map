@@ -33,14 +33,14 @@ Discarded input sections
  .bss.AddressOrCommandFlag
                 0x0000000000000000        0x1 ./src/CommProtocol.o
  .text.DoCommand
-                0x0000000000000000       0x74 ./src/CommProtocol.o
+                0x0000000000000000      0x10c ./src/CommProtocol.o
  .debug_info    0x0000000000000000       0xf2 ./src/CommProtocol.o
  .debug_abbrev  0x0000000000000000       0x78 ./src/CommProtocol.o
  .debug_loc     0x0000000000000000       0x2c ./src/CommProtocol.o
  .debug_aranges
                 0x0000000000000000       0x20 ./src/CommProtocol.o
  .debug_ranges  0x0000000000000000       0x10 ./src/CommProtocol.o
- .debug_line    0x0000000000000000      0x114 ./src/CommProtocol.o
+ .debug_line    0x0000000000000000      0x122 ./src/CommProtocol.o
  .debug_str     0x0000000000000000      0x224 ./src/CommProtocol.o
  .comment       0x0000000000000000       0x71 ./src/CommProtocol.o
  .ARM.attributes
