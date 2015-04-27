@@ -39,7 +39,7 @@ def startCapture(port, baudrate):
     ReadDataSize = 4 # make this an input from the gui
     print('startCaptureButton status = ' + str(startCaptureButton["state"]))#for testing
     write_Characteristics = serial.Serial(port, baudrate)
-    SerialSend.send(write_Characteristics, string)
+    SerialSend.send(write_Characteristics, "GIVEMEDATA")
     write_Characteristics.close()
     while(startCaptureButton['state'] =='disabled'):
         read_Characteristics = serial.Serial(port, baudrate, timeout=None)
