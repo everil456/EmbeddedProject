@@ -6,8 +6,8 @@ import threading
 
 
 
-
-
+read_Characteristics = serial.Serial("COM1", 115200, timeout =None)
+read_Characteristics.close()
 def doNothing():
     print("ok, I won't")
     return 0
@@ -23,7 +23,10 @@ def callStartCapture():
 
 def realStartCapture():
     comPort = port.get()
-    baudrate = 115200 #make this an input from the gui
+    baudrate = bRate.get() #make this an input from the gui
+    print 'baudrate = ' + baudrate
+    if(baudrate == ""):
+        baudrate = 115200
     startCapture(comPort, baudrate)
     return 0
 
@@ -36,7 +39,7 @@ def startCapture(port, baudrate):
         #print("waiting")
     startCaptureButton.config(state=DISABLED)
     print('port = ' + port)
-    ReadDataSize = 4 # make this an input from the gui
+    ReadDataSize = 100 # make this an input from the gui
     print('startCaptureButton status = ' + str(startCaptureButton["state"]))#for testing
     write_Characteristics = serial.Serial(port, baudrate)
     SerialSend.send(write_Characteristics, "GIVEMEDATA")
@@ -81,7 +84,8 @@ root.title('Sonic Locator')
 
 
 port = StringVar()
-readingCode = StringVar()
+bRate = StringVar()
+
 
 
 
@@ -103,7 +107,7 @@ editMenu.add_command(label="Redo", command=doNothing)
 
 #Toolbar Stuff
 toolbar = Frame(root, bg="grey")
-connectButton = Button(toolbar, text="Connect to port", command = printPort)
+connectButton = Button(toolbar, text="Enter COM port and Baudrate", command = printPort)
 connectButton.pack(side=LEFT, padx=2, pady=2)
 startCaptureButton = Button(toolbar, text="Start capture", command = callStartCapture)
 startCaptureButton.config(state=DISABLED)
@@ -119,11 +123,15 @@ status = Label(root, text="Preparing to do nothing", bd=1, relief=SUNKEN, anchor
 status.pack(side=BOTTOM, fill=X)
 
 #Text input
-mEntry = Entry(root,textvariable=port).pack(side=TOP)
+mEntry = Entry(root,textvariable=port).pack(side=LEFT)
+bRateEntry = Entry(root,textvariable=bRate).pack(side=RIGHT)
 
 #Text Output
 ButtonText = 'Enter your port'
-text = Label(text=ButtonText).pack()
+text = Label(text=ButtonText).pack(side = LEFT)
+BRTextBox = 'Enter your baudrate'
+text = Label(text=BRTextBox).pack(side = RIGHT)
+
 
 
 
