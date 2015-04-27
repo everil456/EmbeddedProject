@@ -1,6 +1,6 @@
 from Tkinter import *
-#import serial
-#import SerialSend
+import serial
+import SerialSend
 from time import sleep
 import threading
 
@@ -17,6 +17,7 @@ def callStartCapture():
 
     stopCaptureButton.config(state=NORMAL)
     dataCapture = threading.Thread(name ='capture', target=realStartCapture)
+    dataCapture.start()
     return 0
 
 
@@ -44,8 +45,8 @@ def startCapture(port, baudrate):
         read_Characteristics = serial.Serial(port, baudrate, timeout=None)
         fromSerial = SerialSend.read(read_Characteristics, ReadDataSize)
 
-        
-        #print 'from the serial port'+str(fromSerial)
+
+        print 'from the serial port'+str(fromSerial)
         read_Characteristics.close()
     print 'finished executing'
         #then send capture message over uart
