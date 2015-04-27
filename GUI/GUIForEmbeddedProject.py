@@ -1,7 +1,8 @@
 from Tkinter import *
-import serial
-import SerialSend
+#import serial
+#import SerialSend
 from time import sleep
+import threading
 
 
 
@@ -13,6 +14,13 @@ def doNothing():
 
 
 def callStartCapture():
+
+    stopCaptureButton.config(state=NORMAL)
+    dataCapture = threading.Thread(name ='capture', target=realStartCapture)
+    return 0
+
+
+def realStartCapture():
     comPort = port.get()
     baudrate = 115200 #make this an input from the gui
     startCapture(comPort, baudrate)
@@ -20,33 +28,25 @@ def callStartCapture():
 
 
 def startCapture(port, baudrate):
+    print('startCaptureButton status = ' + str(startCaptureButton["state"]))#for testing
+    print('stopCaptureButton status = ' + str(stopCaptureButton["state"]))#for testing
+    while(stopCaptureButton['state']!='normal'):
+        stopCaptureButton.config(state=NORMAL)
+        #print("waiting")
     startCaptureButton.config(state=DISABLED)
-    stopCaptureButton.config(state=NORMAL)
     print('port = ' + port)
     ReadDataSize = 4 # make this an input from the gui
-    q=0
-    print('startCaptureButton status = ' + str(startCaptureButton.grab_status()))#for testing
-    while(startCaptureButton.grab_status()=='None'):
-        choice = raw_input("read or write or exit")
-        if(choice =="write"):
-            string = 0
-            write_Characteristics = serial.Serial(port, baudrate)
-            while(string!='1'):
-                string = raw_input('What would you like to send?') #edit this line to accept
-                #input from matt's gui
-                SerialSend.send(write_Characteristics, string)
-            write_Characteristics.close()
-        elif(choice == 'read'):
-            read_Characteristics = serial.Serial(port, baudrate, timeout=None)
-            fromSerial = 0
-            while(fromSerial!='10      '):
-                fromSerial = SerialSend.read(read_Characteristics, ReadDataSize)
-                print 'from the serial port'+str(fromSerial)
-            read_Characteristics.close()
-        elif(choice == 'exit'):
-            q=choice
-        else:
-            print 'not a valid choice, try again'
+    print('startCaptureButton status = ' + str(startCaptureButton["state"]))#for testing
+    write_Characteristics = serial.Serial(port, baudrate)
+    SerialSend.send(write_Characteristics, string)
+    write_Characteristics.close()
+    while(startCaptureButton['state'] =='disabled'):
+        read_Characteristics = serial.Serial(port, baudrate, timeout=None)
+        fromSerial = SerialSend.read(read_Characteristics, ReadDataSize)
+
+        
+        #print 'from the serial port'+str(fromSerial)
+        read_Characteristics.close()
     print 'finished executing'
         #then send capture message over uart
     return 0
@@ -55,6 +55,7 @@ def startCapture(port, baudrate):
 def connectToCom():
     print("connecting to com")
     startCaptureButton.config(state=NORMAL)
+    stopCaptureButton.config(state=NORMAL)
     #Put Jason's code here
     return 0       #needs to be changed depending on Jason's code
 
