@@ -1,7 +1,7 @@
 from Tkinter import *
-#import serial
-#import SerialSend
-#from time import sleep
+import serial
+import SerialSend
+from time import sleep
 
 
 
@@ -20,10 +20,13 @@ def callStartCapture():
 
 
 def startCapture(port, baudrate):
+    startCaptureButton.config(state=DISABLED)
+    stopCaptureButton.config(state=NORMAL)
     print('port = ' + port)
-    ReadDataSize = 32 # make this an input from the gui
+    ReadDataSize = 4 # make this an input from the gui
     q=0
-    while(q!='exit'):
+    print('startCaptureButton status = ' + str(startCaptureButton.grab_status()))#for testing
+    while(startCaptureButton.grab_status()=='None'):
         choice = raw_input("read or write or exit")
         if(choice =="write"):
             string = 0
@@ -51,12 +54,14 @@ def startCapture(port, baudrate):
 
 def connectToCom():
     print("connecting to com")
+    startCaptureButton.config(state=NORMAL)
     #Put Jason's code here
     return 0       #needs to be changed depending on Jason's code
 
 
 def stopCapture():
     print("stop capture")
+    startCaptureButton.config(state=NORMAL)
     #Put Jason's code here
     return 0       #needs to be changed depending on Jason's code
 
@@ -74,6 +79,7 @@ root.title('Sonic Locator')
 
 
 port = StringVar()
+readingCode = StringVar()
 
 
 
@@ -98,8 +104,10 @@ toolbar = Frame(root, bg="grey")
 connectButton = Button(toolbar, text="Connect to port", command = printPort)
 connectButton.pack(side=LEFT, padx=2, pady=2)
 startCaptureButton = Button(toolbar, text="Start capture", command = callStartCapture)
+startCaptureButton.config(state=DISABLED)
 startCaptureButton.pack(side=LEFT, padx=2, pady=2)
 stopCaptureButton = Button(toolbar, text="Stop capture", command = stopCapture)
+stopCaptureButton.config(state=DISABLED)
 stopCaptureButton.pack(side=LEFT, padx=2, pady=2)
 toolbar.pack(side=TOP, fill=X)
 
