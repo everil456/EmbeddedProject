@@ -39,16 +39,17 @@ def startCapture(port, baudrate):
         #print("waiting")
     startCaptureButton.config(state=DISABLED)
     print('port = ' + port)
-    ReadDataSize = 100 # make this an input from the gui
+    ReadDataSize = 800 # make this an input from the gui
     print('startCaptureButton status = ' + str(startCaptureButton["state"]))#for testing
-    write_Characteristics = serial.Serial(port, baudrate)
-    SerialSend.send(write_Characteristics, "GIVEMEDATA")
-    write_Characteristics.close()
+##    write_Characteristics = serial.Serial(port, baudrate)
+##    SerialSend.send(write_Characteristics, "GIVE ME DATA OUT OF WHILE LOOP")
+##    write_Characteristics.close()
     while(startCaptureButton['state'] =='disabled'):
+        write_Characteristics = serial.Serial(port, baudrate)
+        SerialSend.send(write_Characteristics, "g")
+        write_Characteristics.close()
         read_Characteristics = serial.Serial(port, baudrate, timeout=None)
         fromSerial = SerialSend.read(read_Characteristics, ReadDataSize)
-
-
         print 'from the serial port'+str(fromSerial)
         read_Characteristics.close()
     print 'finished executing'
