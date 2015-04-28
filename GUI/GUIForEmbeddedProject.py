@@ -3,10 +3,13 @@ import serial
 import SerialSend
 from time import sleep
 import threading
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+import numpy as np
 
 
 
-##read_Characteristics = serial.Serial("COM1", 115200, timeout =None)
+##read_Characteristics = serial.Serial("COM12", 115200, timeout =None)
 ##read_Characteristics.close()
 def doNothing():
     print("ok, I won't")
@@ -41,9 +44,6 @@ def startCapture(port, baudrate):
     print('port = ' + port)
     ReadDataSize = 800 # make this an input from the gui
     print('startCaptureButton status = ' + str(startCaptureButton["state"]))#for testing
-##    write_Characteristics = serial.Serial(port, baudrate)
-##    SerialSend.send(write_Characteristics, "GIVE ME DATA OUT OF WHILE LOOP")
-##    write_Characteristics.close()
     while(startCaptureButton['state'] =='disabled'):
         write_Characteristics = serial.Serial(port, baudrate)
         SerialSend.send(write_Characteristics, "g")
@@ -52,6 +52,13 @@ def startCapture(port, baudrate):
         fromSerial = SerialSend.read(read_Characteristics, ReadDataSize)
         print 'from the serial port'+str(fromSerial)
         read_Characteristics.close()
+
+        #setup animation
+        fig = plt.figure()
+        plot = plt.plot(fromSerial)
+        anim = animation.FuncAnimation(fig, analogPlot.update,fargs(plot),interval=50)
+        plt.show()
+        
     print 'finished executing'
         #then send capture message over uart
     return 0
@@ -68,6 +75,8 @@ def connectToCom():
 def stopCapture():
     print("stop capture")
     startCaptureButton.config(state=NORMAL)
+    read_Characteristics = serial.Serial('COM12', 115200, timeout=None)
+    read_Characteristics.close()
     #Put Jason's code here
     return 0       #needs to be changed depending on Jason's code
 

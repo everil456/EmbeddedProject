@@ -3,7 +3,7 @@ import serial
 def send(ser, data):
     #ser.open()
     x = ser.write(data)
-    print 'Message Sent'
+    print 'send a ' +data
     
 
 def read(ser, ReadDataSize):
