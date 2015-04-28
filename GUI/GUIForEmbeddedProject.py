@@ -6,8 +6,8 @@ import threading
 
 
 
-read_Characteristics = serial.Serial("COM1", 115200, timeout =None)
-read_Characteristics.close()
+##read_Characteristics = serial.Serial("COM1", 115200, timeout =None)
+##read_Characteristics.close()
 def doNothing():
     print("ok, I won't")
     return 0
