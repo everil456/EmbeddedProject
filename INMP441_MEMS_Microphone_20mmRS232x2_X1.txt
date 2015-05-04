@@ -1,0 +1,15 @@
+Partlist exported from /home/mark/Engimusing/emus_brd_dev/MEMS_Microphone/INMP441_MEMS_Microphone_20mmRS232x2_X1.sch at 5/4/15 11:56 AM
+
+Qty Value               Device              Package      Parts                                      Description                                      MF    MPN         OC_FARNELL OC_NEWARK
+10  0.1uF               C-USC0402           C0402        C3, C4, C5, C6, C7, C9, C10, C11, C12, C13 CAPACITOR, American symbol                                                             
+1   0805L110SLYR        0805L110SLYR        0805L110SLYR F1                                                                                                                                
+3   10uF                C-USC0603           C0603        C1, C2, C8                                 CAPACITOR, American symbol                                                             
+1   220                 R-USR0402           R0402        R1                                         RESISTOR, American symbol                                                              
+2   DF11-4_STRAIGHT_PIN DF11-4_STRAIGHT_PIN DF11SP-4-H   P1, P2                                     CONNECTOR 4 POS SM                                                                     
+1   DF11-6_STRAIGHT_PIN DF11-6_STRAIGHT_PIN DF11SP-6-H   P3                                         CONNEECTOR 6 POS SM                                                                    
+1   EFM32TG110F32-1     EFM32TG110F32-1     QFN24_5X5    U2                                                                                                                                
+1   INMP441             INMP441             INMP441      U4                                                                                                                                
+1   L1                  LEDCHIP-LED0603     CHIP-LED0603 D2                                         LED                                                                                    
+1   MAX3232CUE          MAX3232CUE          TSSOP16      U3                                         True RS-232 Transceivers 3.0V to 5.5V, Low-Power MAXIM MAX3232CUE+ 1593350    68K4629  
+1   MCP1700T-3302E/TT   MCP1700-3302E/TT    SOT23A       U1                                                                                                                                
+1   PESD5Z6.0           DIODESOD-523        SOD-523      D1                                         Diode                                                                                  

@@ -1,0 +1,26 @@
+digraph FirmwareFlowDiagram {
+	
+	rankdir=LR;
+	splines=ortho;
+	node [shape = box] ;
+	node [label = "CMU"] CMU;
+	node [label = "UART"]UART;
+	node [label = "I2S"]I2S;
+	node [label = "Wait"]wait;
+	node [label = "Collect Data"] getData;
+	node [label = "Transmit Data"] Tx;
+	
+
+	subgraph clusterCG{
+			label = Setup;	
+			CMU->UART->I2S;
+		}
+
+	I2S->wait;
+	wait->getData [xlabel = "'g'"];
+	getData->Tx->wait;
+	wait->wait[xlabel = "No\nInstrucion"];
+	
+	{rank=same getData, Tx};
+
+}
