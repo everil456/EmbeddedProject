@@ -42,7 +42,10 @@ src/main.o: ../src/main.c \
  /home/mark/Downloads/SimplicityStudio_v3/developer/sdks/efm32/v2/Device/SiliconLabs/EFM32TG/Include/efm32tg_af_ports.h \
  /home/mark/Downloads/SimplicityStudio_v3/developer/sdks/efm32/v2/Device/SiliconLabs/EFM32TG/Include/efm32tg_af_pins.h \
  /home/mark/Downloads/SimplicityStudio_v3/developer/sdks/efm32/v2/emlib/inc/em_system.h \
- ../src/em_chip.h ../src/config.h ../src/usart.h ../src/compiler.h
+ ../src/em_chip.h ../src/config.h ../src/usart.h ../src/compiler.h \
+ ../src/em_gpio.h ../src/em_bitband.h \
+ /home/mark/Downloads/SimplicityStudio_v3/developer/sdks/efm32/v2/emlib/inc/em_assert.h \
+ ../src/em_usart.h ../src/em_cmu.h
 
 /home/mark/Downloads/SimplicityStudio_v3/developer/sdks/efm32/v2/Device/SiliconLabs/EFM32TG/Include/em_device.h:
 
@@ -137,3 +140,13 @@ src/main.o: ../src/main.c \
 ../src/usart.h:
 
 ../src/compiler.h:
+
+../src/em_gpio.h:
+
+../src/em_bitband.h:
+
+/home/mark/Downloads/SimplicityStudio_v3/developer/sdks/efm32/v2/emlib/inc/em_assert.h:
+
+../src/em_usart.h:
+
+../src/em_cmu.h:
