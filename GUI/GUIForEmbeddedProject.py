@@ -42,22 +42,22 @@ def startCapture(port, baudrate):
         #print("waiting")
     startCaptureButton.config(state=DISABLED)
     print('port = ' + port)
-    ReadDataSize = 800 # make this an input from the gui
+    ReadDataSize = 240 # make this an input from the gui
     print('startCaptureButton status = ' + str(startCaptureButton["state"]))#for testing
     while(startCaptureButton['state'] =='disabled'):
         write_Characteristics = serial.Serial(port, baudrate)
         SerialSend.send(write_Characteristics, "g")
         write_Characteristics.close()
-        read_Characteristics = serial.Serial(port, baudrate, timeout=None)
+        read_Characteristics = serial.Serial(port, baudrate, timeout=1)
         fromSerial = SerialSend.read(read_Characteristics, ReadDataSize)
         print 'from the serial port'+str(fromSerial)
         read_Characteristics.close()
 
-        #setup animation
-        fig = plt.figure()
-        plot = plt.plot(fromSerial)
-        anim = animation.FuncAnimation(fig, analogPlot.update,fargs(plot),interval=50)
-        plt.show()
+##        #setup animation
+##        fig = plt.figure()
+##        plot = plt.plot(fromSerial)
+##        anim = animation.FuncAnimation(fig, analogPlot.update,fargs(plot),interval=50)
+##        plt.show()
         
     print 'finished executing'
         #then send capture message over uart
